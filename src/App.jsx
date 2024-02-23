@@ -95,7 +95,7 @@ function App() {
                 element={user ? <Dashboard /> : <Navigate to='/login' />} />
             </Routes>
           </div>
-          <Footer />
+          
         </BrowserRouter>
       </AuthProvider>
     </div>
