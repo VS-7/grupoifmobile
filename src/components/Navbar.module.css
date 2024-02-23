@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+:root {
+    --color-navbar: #f0f0f0; /* Cor de fundo da navbar */
+    --color--2: #cccccc; /* Sombra */
+    --color--5: #f5f5f5; /* Cor do texto */
+    --color-active: #007bff; /* Cor do link ativo */
+    --safe-area-inset-bottom: env(safe-area-inset-bottom); /* Espaço seguro para iPhone com notch */
+}
+
+.bodyPadding {
+    padding-top: 60px; /* Espaço no topo para não sobrepor o conteúdo (ajuste conforme necessário) */
+}
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5em 1em;
+    background-color: var(--color-navbar);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 100; /* Eleva acima do conteúdo da página */
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5em 0;
+    padding-bottom: calc(0.5em + var(--safe-area-inset-bottom)); /* Ajuste para dispositivos com notch */
+    box-shadow: 0 -2px 10px var(--color--2);
+    background-color: var(--color-navbar);
+    z-index: 100;
+}
+
+
+
+.links_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.links_list li {
+    padding: 0.5em;
+}
+
+.links_list li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--color--5);
+    font-size: 0.9rem; /* Ajuste conforme necessário */
+}
+
+.icon {
+    margin-bottom: 4px; /* Espaço entre ícone e texto, se aplicável */
+    font-size: 20px; /* Tamanho dos ícones */
+}
+
+.active {
+    color: var(--color-active);
+}
+
+.logoutButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    font-family: 'Lobster', cursive; /* Mudança de fonte */
+    font-size: 1.5em; /* Ajuste o tamanho conforme necessário */
+    display: flex; /* Garante que o texto esteja alinhado com o botão */
+    align-items: center; /* Centraliza verticalmente o texto com o botão */
+    color: var(--color--5);
+    margin-right: auto; /* Garante que o texto fique à esquerda e o botão à direita */
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.logoutButton {
+    font-size: 1.1em; /* Ajuste conforme necessário */
+    margin-left: 40px; /* Espaço entre o texto e o botão */
+    display: flex;
+}
+
+.brand, .logoutButton {
+    color: var(--color--5);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .links_list {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .links_list li a {
+        flex-direction: column; /* Ícones acima do texto para melhor visibilidade em dispositivos móveis */
+    }
+
+    /* Remova a alteração de direção do flex de .headerContent para evitar empilhar a marca e o botão de sair verticalmente */
+}

@@ -1,0 +1,23 @@
+.container {
+  min-height: 60vh;
+  margin-bottom: 6em;
+}
+
+.navbarContainer {
+  padding-bottom: 80px;
+  padding-inline-end: 30px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #fff; /* Ajuste a cor conforme o tema */
+}

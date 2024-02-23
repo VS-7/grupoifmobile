@@ -1,0 +1,14 @@
+.register {
+    text-align: center;
+}
+
+.register p{
+    color: var(--color--6);
+}
+
+.register button {
+    width: 100%;
+}
+
+
+
