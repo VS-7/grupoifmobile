@@ -1,0 +1,77 @@
+.dashboard {
+  text-align: center;
+  max-width: 960px; /* Ajuste conforme necessário */
+  margin: auto;
+}
+
+.profile_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+
+.profile_photo {
+  border-radius: 50%;
+  width: 120px; /* Ajuste conforme necessário */
+  height: 120px; /* Mantenha igual à largura para um círculo perfeito */
+  object-fit: cover;
+}
+
+.profile_actions {
+  display: flex;
+  gap: 10px; /* Espaçamento entre botões */
+}
+
+.posts_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  gap: 1em; /* Espaçamento entre as postagens */
+  margin-bottom: 2em;
+}
+
+.post_item {
+  position: relative;
+}
+
+.post_image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Arredondamento dos cantos da imagem */
+}
+
+.post_actions {
+  display: none; /* Esconde os botões por padrão */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 0;
+  border-bottom-left-radius: 8px; /* Arredonda os cantos inferiores */
+  border-bottom-right-radius: 8px;
+}
+
+.post_item:hover .post_actions {
+  display: flex; /* Mostra os botões ao passar o mouse */
+}
+
+.noposts {
+  margin: 2em 0;
+}
+
+.noposts p {
+  margin-bottom: 1em;
+}
+
+.createdBy {
+    font-style: italic;
+    color: var(--color--6);
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+

@@ -1,0 +1,11 @@
+.login {
+    text-align: center;
+}
+
+.login p {
+    color: var(--color--6);
+}
+
+.login button {
+    width: 100%;
+}
