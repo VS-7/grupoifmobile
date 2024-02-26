@@ -4,9 +4,10 @@
   --color--2: #0b0b0c;
   --color--3: #21262d;
   --color--4: #30363d;
-  --color--5: #8b949e;
-  --color--6: #c9d1d9;
+  --color--5: #ffffff;
+  --color--6: #ffffff;
   --color--7: #ffffff;
+  --color--8: #e4e4e4; 
   --color-error: #721c24;
   --color-btn: #2ea043;
   --color-navbar: #000000;
@@ -24,6 +25,7 @@
   --color--5: #606060;
   --color--6: #303030;
   --color--7: #000000;
+  --color--8: #1e1e1e;
   --color-error: #a94442;
   --color-btn: #4CAF50;
   --color-navbar: #f8f9fa;
@@ -194,4 +196,8 @@ button[disabled] {
 
 .noposts a {
   padding: 10px 25px;
+}
+
+.h3 {
+  margin: 10px;
 }

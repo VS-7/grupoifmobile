@@ -5,7 +5,8 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     updateProfile,
-    signOut
+    signOut,
+    sendPasswordResetEmail
 } from 'firebase/auth'
 
 import { useState, useEffect } from 'react'
@@ -67,6 +68,8 @@ export const useAuthentication = () => {
         }
     };
 
+    
+
     // logout
     const logout = () => {
 
@@ -101,7 +104,14 @@ export const useAuthentication = () => {
             setError(systemErrorMessage);
             setLoading(false);
          }
-    }       
+    }   
+    
+    
+    // esqueci minha senha
+    const resetPassword = async (email) => {
+        const auth = getAuth();
+        return sendPasswordResetEmail(auth, email);
+      };
 
     useEffect(() => {
         return () => setCancelled(true);
@@ -114,5 +124,6 @@ export const useAuthentication = () => {
         loading,
         logout,
         login,
+        resetPassword,
     };
 };

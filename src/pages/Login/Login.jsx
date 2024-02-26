@@ -19,7 +19,7 @@ const Login = () => {
       password,
     };
 
-    const res = await login(user);
+    await login(user);
     console.log(user);
   };
 
@@ -57,12 +57,12 @@ const Login = () => {
           />
         </label>
         {!loading && <button className="btn">Entrar</button>}
-        {loading && (
-          <button className="btn" disabled>
-            Aguarde...
-          </button>
-        )}
+        {loading && <button className="btn" disabled>Entrando...</button>}
         {error && <p className="error">{error}</p>}
+        {/* Adicione o link para a página de redefinição de senha aqui */}
+        <p className={styles.resetPasswordLink}>
+          <a href="/resetPassword">Esqueci minha senha</a>
+        </p>
       </form>
     </div>
   );

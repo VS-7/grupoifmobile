@@ -1,19 +1,20 @@
-import styles from "./CreatePost.module.css";
+import styles from "./CreateProject.module.css"; // Ajuste o caminho conforme necessário
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../../context/AuthContext";
 import { useInsertDocument } from "../../hooks/useInsertDocument";
-import { useUploadDocument } from "../../hooks/useUploadDocument"; // import the function for uploading images
+import { useUploadDocument } from "../../hooks/useUploadDocument"; // Importe a função para upload de imagens
 
-const CreatePost = () => {
+const CreateProject = () => {
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState(null); // change to null
-  const [body, setBody] = useState("");
+  const [image, setImage] = useState(null); // Alterado para null
+  const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
+  const [maxParticipants, setMaxParticipants] = useState(""); // Novo estado para o limite de participantes
   const [formError, setFormError] = useState("");
 
   const { user } = useAuthValue();
-  const { insertDocument, response } = useInsertDocument("posts");
+  const { insertDocument, response } = useInsertDocument("projects"); // Alterado para "projects"
   const navigate = useNavigate();
 
   const handleImageChange = (e) => {
@@ -25,45 +26,46 @@ const CreatePost = () => {
     e.preventDefault();
     setFormError("");
 
-    // Validate image
+    // Validar imagem
     if (!image) {
       setFormError("Por favor, selecione uma imagem.");
       return;
     }
 
-    // Create tags array
+    // Criar array de tags
     const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
-    // Upload image to Firebase Storage
+    // Upload da imagem para o Firebase Storage
     try {
-      const imageUrl = await useUploadDocument(image, "posts"); // assuming "posts" is your storage path
+      const imageUrl = await useUploadDocument(image, "projects"); // Assumindo que "projects" é o caminho do storage
       insertDocument({
         title,
         image: imageUrl,
-        body,
+        description,
         tagsArray,
+        maxParticipants: Number(maxParticipants), // Garantir que é um número
         uid: user.uid,
         createdBy: user.displayName,
+        currentParticipants: 1 // Inicialmente, apenas o criador
       });
-      navigate("/");
+      navigate("/"); // Redirecionar conforme necessário
     } catch (error) {
       setFormError("Erro ao fazer upload da imagem. Tente novamente.");
     }
   };
 
-
   return (
-    <div className={styles.create_post}>
-        <h2>Criar Publicação</h2>
-        <p>Escreva algo, e compartilhe seu conhecimeto!</p>
+    <div className={styles.create_project}>
+        <h2>Criar Projeto</h2>
+        <p>Descreva o projeto e convide outros para participarem!</p>
         <form onSubmit={handleSubmit}>
           <label>
-            <span>Titulo:</span>
+            <span>Título:</span>
             <input 
               type="text" 
               name="title" 
               required 
-              placeholder="Pense em um bom título..."
+              placeholder="Um bom título para o projeto..."
               onChange={(e) => setTitle(e.target.value)} 
               value={title}/>
           </label>
@@ -79,14 +81,24 @@ const CreatePost = () => {
             />
           </label>
           <label>
-            <span>Conteúdo:</span>
+            <span>Descrição:</span>
             <textarea 
-              name="body" 
+              name="description" 
               required 
-              placeholder="Insira o conteúdo da publicação"
-              onChange={(e) => setBody(e.target.value)}
-              value={body}
+              placeholder="Descreva o projeto"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
             ></textarea>
+          </label>
+          <label>
+            <span>Limite de Participantes:</span>
+            <input 
+              type="number" 
+              name="maxParticipants" 
+              required 
+              placeholder="Número máximo de participantes"
+              onChange={(e) => setMaxParticipants(e.target.value)} 
+              value={maxParticipants}/>
           </label>
           <label>
             <span>Tags:</span>
@@ -112,4 +124,4 @@ const CreatePost = () => {
   )
 }
 
-export default CreatePost
+export default CreateProject;

@@ -4,7 +4,7 @@
 :root {
     --color-navbar: #f0f0f0; /* Cor de fundo da navbar */
     --color--2: #cccccc; /* Sombra */
-    --color--5: #f5f5f5; /* Cor do texto */
+    /* Cor do texto */
     --color-active: #007bff; /* Cor do link ativo */
     --safe-area-inset-bottom: env(safe-area-inset-bottom); /* Espaço seguro para iPhone com notch */
 }
@@ -88,7 +88,6 @@
     font-size: 1.5em; /* Ajuste o tamanho conforme necessário */
     display: flex; /* Garante que o texto esteja alinhado com o botão */
     align-items: center; /* Centraliza verticalmente o texto com o botão */
-    color: var(--color--5);
     margin-right: auto; /* Garante que o texto fique à esquerda e o botão à direita */
     margin-left: 10px;
     margin-top: 5px;
@@ -101,9 +100,10 @@
 }
 
 .brand, .logoutButton {
-    color: var(--color--5);
+    color: var(--color--8);
     text-decoration: none;
 }
+
 
 @media (max-width: 768px) {
     .navbar {

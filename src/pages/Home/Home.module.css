@@ -9,7 +9,7 @@
     max-width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .search_form input {
@@ -17,9 +17,13 @@
     width: 50%;
 }
 
-.home_h1 {
+.h3 {
+    margin-left: 10px;
+}
+
+.home_h3 {
     border-right: 4px solid;
-    width: 27ch;
+    width: 16ch;
     white-space: nowrap;
     overflow: hidden;
     animation: typing 2s steps(27),
@@ -50,6 +54,40 @@
     padding: 10px 25px;
 }
 
+.projects_section {
+    margin-bottom: 2rem;
+  }
+  
+  .projects_scroll {
+    display: flex;
+    overflow-x: auto; /* Permite rolagem horizontal */
+    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em dispositivos touch */
+    gap: 10px; /* Espaço entre os cards */
+    padding-bottom: 20px; /* Adiciona um padding para compensar a altura da scrollbar */
+    margin-bottom: -20px; /* Move a scrollbar para "fora" da visualização do usuário */
+    margin-left: 10px;
+  }
+  
+
+
+  /* Estilo para os cards de projeto dentro da rolagem horizontal */
+  .project_detail {
+    flex: 0 0 auto; /* Impede que o card mude de tamanho */
+    width: 300px; /* Define uma largura fixa para cada card */
+    height: 200px;
+  }
+  
+  /* Garanta que o contêiner .projects_scroll não tenha largura máxima restritiva */
+  .projects_scroll {
+    white-space: nowrap; /* Impede que os itens sejam quebrados em linhas novas */
+  }
+
+  /* Assegura que o contêiner da seção de projetos ocupe a largura total */
+.projects_section {
+    width: 100%;
+    overflow: hidden; /* Esconde o overflow horizontal do contêiner pai, se necessário */
+  }
+
 @media (max-width: 768px) {
     .home_h1 {
         font-size: 1.5em; /* Ajustando o tamanho da fonte para telas menores */
@@ -59,6 +97,9 @@
         width: 100%; /* Faz com que o input ocupe toda a largura disponível */
         max-width: none; /* Removendo a largura máxima do input */
     }
+     
 }
+
+
 
 

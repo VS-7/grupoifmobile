@@ -40,7 +40,7 @@ const Register = () => {
 
   return (
     <div className={styles.register}>
-        <h1>Cadastre-se, e faça parte do grupo!</h1>
+        <h1>Cadastre-se</h1>
         <p>Crie seu usuário e compartilhe seus conhecimentos</p>
             <form onSubmit={handleSubmit}>
                     <label>
@@ -90,7 +90,7 @@ const Register = () => {
                 {!loading && <button className="btn">Cadastrar</button>}
                 {loading && ( 
                     <button className="btn" disabled>
-                        Aguarde...    
+                        Registrando...    
                     </button>
                 )}
                 {error && <p className="error">{error}</p>}

@@ -1,4 +1,5 @@
 import styles from "./EditPost.module.css"
+import { MdEdit } from "react-icons/md";
 
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
@@ -82,7 +83,7 @@ const EditPost = () => {
     <div className={styles.edit_post}>
       {post && (
         <>
-          <h2>Editando post: {post.title}</h2>
+          <h2>Editando publicação: {post.title}</h2>
           <p>Altere os dados do post como desejar!</p>
           <form onSubmit={handleSubmit}>
             <label>
@@ -96,7 +97,7 @@ const EditPost = () => {
                 value={title}/>
             </label>
             <label>
-              <span>URL da imagem:</span>
+            {/*  <span>URL da imagem:</span>
               <input 
                 type="text" 
                 name="image" 
@@ -104,8 +105,8 @@ const EditPost = () => {
                 placeholder="Insira uma imagem que representa  seu post"
                 onChange={(e) => setImage(e.target.value)} 
                 value={image}
-              />
-              <p className={styles.preview_title}>Preview da imagem atual:</p>
+              /> 
+      <p className={styles.preview_title}>Preview da imagem atual:</p> */}
               <img 
                 className={styles.image_preview} 
                 src={post.image} 
@@ -131,10 +132,10 @@ const EditPost = () => {
                 onChange={(e) => setTags(e.target.value)} 
                 value={tags}/>
             </label>
-            {!response.loading && <button className="btn">Editar</button>}
+            {!response.loading && <button className="btn btn-dark"><MdEdit size="1.5em"/></button>}
             {response.loading && (
             <button className="btn" disabled>
-              Aguarde.. .
+              Aguarde...
             </button>
           )}
           {(response.error || formError) && (

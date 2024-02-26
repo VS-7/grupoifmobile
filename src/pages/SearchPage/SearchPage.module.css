@@ -1,0 +1,33 @@
+.search_form {
+    margin: auto;
+    text-align: center;
+    display: flex;
+  }
+  
+
+.search_form input {
+    margin-right: 10px;
+    width: 50%;
+}
+  .publication_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+    gap: 0.5em; /* Espaçamento entre as postagens */
+    margin-bottom: 2em;
+  }
+
+  .h3{
+    margin-left: 10px;
+  }
+
+
+  .publication_card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px; /* Arredondamento dos cantos da imagem */
+  }
+  
+  .publication_card h3 {
+    margin: 10px 0;
+  }

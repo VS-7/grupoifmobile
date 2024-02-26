@@ -1,0 +1,35 @@
+.cardEscolha {
+  max-width: 35%;
+  margin: 0 auto;
+  margin-bottom: 25px;
+  gap: 16px;
+  background-color: var(--color--2);
+  border-radius: 6px;
+  padding: 16px;
+  border: 1px solid var(--color--4);
+}
+
+.cardEscolha h3 {
+  color: var(--color--6);
+}
+
+.publication h2{
+  align-items: center;
+  text-align: center;
+}
+
+.p_publication {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+
+
+@media (max-width: 768px) {
+  .cardEscolha {
+    max-width: 75%;
+
+  }
+   
+}
+

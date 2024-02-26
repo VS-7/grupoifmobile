@@ -1,63 +1,166 @@
 .dashboard {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  max-width: 960px; /* Ajuste conforme necessário */
+  margin: auto;
 }
 
-.dashboard h2 {
-    font-size: 2.2em;
-    margin-bottom: 0.5em;
+.card {
+  background: #ffffff; /* Cor de fundo do card */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra do card */
+  border-radius: 8px; /* Bordas arredondadas do card */
+  padding: 2em; /* Espaçamento interno do card */
+  margin-bottom: 2em; /* Espaço abaixo do card */
 }
 
-.dashboard p {
-    color: var(--color--6);
-    margin-bottom: 1em;
+.profile_section h3 {
+  margin-top: 0;
+  color: #333333; /* Cor do texto do nome de usuário */
 }
 
-.post_header, .post_row {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    padding: 10px;
+.profile_section p {
+  color: #555555; /* Cor do texto do email */
+  margin-bottom: 1em; /* Espaço abaixo do email */
 }
 
-.post_header {
-    font-weight: bold;
-    border: 1px solid var(--color--4);
-    border-radius: 6px;
+.profile_section {
+  display: flex;
+  flex-direction: column; /* Organiza os elementos verticalmente */
+  align-items: center; /* Centraliza os elementos horizontalmente */
+  justify-content: center; /* Opcional, dependendo do layout desejado */
+  margin-bottom: 2em;
 }
 
-.post_row {
-    align-items: center;
-    border-bottom: 0.5px solid var(--color--4);
+.profile_photo {
+  max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
+  height: auto; /* Mantém a proporção da imagem */
+  margin-bottom: 1em; /* Espaço entre a imagem e o texto abaixo dela */
 }
 
-.post_row p {
-    color: var(--color--6);
+.profile_actions {
+  display: flex;
+  gap: 10px; /* Espaço entre os botões */
+  margin-top: 1em; /* Espaço entre os botões e o texto/nome acima */
 }
 
-.post_row button,
-.post_row a {
-    margin: 0 5px;
+.profile_photo {
+  border-radius: 50%;
+  width: 90px; /* Ajuste conforme necessário */
+  height: 90px; /* Mantenha igual à largura para um círculo perfeito */
+  object-fit: cover;
 }
 
-.post_row a:hover {
-    color: var(--color--7);
-    border: 0.5px solid var(--color--7);
-    transition: 500ms;
+
+.posts_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+  gap: 1em; /* Espaçamento entre as postagens */
+  margin-bottom: 2em;
+}
+
+.post_item {
+  position: relative;
+}
+
+.post_image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px; /* Arredondamento dos cantos da imagem */
+}
+
+.post_actions {
+  display: none; /* Esconde os botões por padrão */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 0;
+  border-bottom-left-radius: 8px; /* Arredonda os cantos inferiores */
+  border-bottom-right-radius: 8px;
+}
+
+.post_item:hover .post_actions {
+  display: flex; /* Mostra os botões ao passar o mouse */
 }
 
 .noposts {
-    text-align: center;
+  margin: 2em 0;
 }
 
 .noposts p {
-    margin-bottom: 1.5em;
+  margin-bottom: 1em;
+  
 }
 
-.noposts a {
-    padding: 10px 25px;
+.createdBy {
+    font-style: italic;
+    color: var(--color--6);
+    font-size: 0.9em;
+    margin-bottom: 1em;
 }
+
+.tab_buttons {
+  display: flex;
+  justify-content: center; /* Centraliza os botões */
+  margin-bottom: 1rem;
+}
+
+.tab_button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+.tab_button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color--6);
+}
+
+.tab_button:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.tab_button:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--color--6);
+  animation: tabHover 0.3s ease forwards;
+}
+
+.tab_buttons .icon {
+  color: var(--color--6); /* Aplica a cor do tema aos ícones */
+}
+
+@keyframes tabHover {
+  0% {
+    width: 0;
+    left: 50%;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
 

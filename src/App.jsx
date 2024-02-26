@@ -22,6 +22,13 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Search from './pages/Search/Search';
 import Post from './pages/Post/Post';
 import EditPost from './pages/EditPost/EditPost';
+import Settings from './pages/Settings/Settings';
+import ResetPassword from './components/ResetPassword';
+import CreateProject from './pages/CreateProject/CreateProject';
+import Project from './pages/Project/Project';
+import EditProject from './pages/EditProject/EditProject';
+import PublicationPage from './pages/PublicationPage/PublicationPage';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 function App() {
 
@@ -60,8 +67,8 @@ function App() {
 
   return (
     <div className='App'>
-     <button onClick={toggleTheme} style={{ position: 'fixed', zIndex: 1000, top: '15px', right: '50px', background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>
-        {theme === 'dark' ? <FiSun size={24} /> : <FiMoon size={24} />}
+     <button onClick={toggleTheme} style={{ position: 'fixed', zIndex: 1000, top: '15px', right: '20px', background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>
+        {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
       </button>
       <AuthProvider value={ { user }}>
         <BrowserRouter>
@@ -75,6 +82,9 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/search" element={<Search />} />
               <Route path='/posts/:id' element={<Post />} />
+              <Route path='/project/:id' element={<Project />} />
+              <Route path='/searchpage' element={<SearchPage />} />
+              <Route path='/resetPassword' element={<ResetPassword />} />
               <Route 
                 path='/login' 
                 element={!user ? <Login /> : <Navigate to="/" />} />
@@ -91,11 +101,27 @@ function App() {
               
               />
               <Route 
+                path='/project/create' 
+                element={user ? <CreateProject /> : <Navigate to='/login' />} 
+              />
+               <Route 
+                path='/publication' 
+                element={user ? <PublicationPage /> : <Navigate to='/login' />} 
+              
+              />
+               <Route 
+                path='/project/edit/:id' 
+                element={user ? <EditProject /> : <Navigate to='/login' />} 
+              />
+              <Route 
                 path='/dashboard'
                 element={user ? <Dashboard /> : <Navigate to='/login' />} />
+              <Route 
+                path='/dashboard/settings' 
+                element={user ? <Settings /> : <Navigate to='/login' />} />
             </Routes>
           </div>
-          <Footer />
+          
         </BrowserRouter>
       </AuthProvider>
     </div>
