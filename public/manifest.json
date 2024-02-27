@@ -1,0 +1,25 @@
+{
+  "background_color": "#2c2c2c",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "IF Mobile",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "IF Mobile",
+  "start_url": "/",
+  "theme_color": "#2c2c2c",
+  "icons": [
+    {
+      "src": "/ifmobile.svg",
+      "type": "image/svg+xml"
+    }
+  ],
+  "id": "IF Mobile",
+  "description": "Primeira versão do ifmobile",
+  "lang": "pt",
+  "categories": [
+    "education",
+    "entertainment",
+    "photo"
+  ]
+}
