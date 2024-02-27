@@ -28,9 +28,9 @@ const Post = () => {
                     <Link to="/" className="btn btn-dark"><IoIosArrowBack size="1em"/> Voltar</Link> 
                 </>
             )}
+
         </div>
     );
-    
 }
 
 export default Post;

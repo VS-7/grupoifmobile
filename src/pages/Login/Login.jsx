@@ -60,10 +60,15 @@ const Login = () => {
         {loading && <button className="btn" disabled>Entrando...</button>}
         {error && <p className="error">{error}</p>}
         {/* Adicione o link para a página de redefinição de senha aqui */}
+       
+        
         <p className={styles.resetPasswordLink}>
           <a href="/resetPassword">Esqueci minha senha</a>
         </p>
       </form>
+      <p className={styles.resetPasswordLink}>
+         Não possui uma conta? <a href="/register">Cadastre-se aqui</a>
+        </p>
     </div>
   );
 };

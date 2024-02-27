@@ -29,21 +29,25 @@ const Project = () => {
 
     return (
         <div className={styles.project_container}>
-            {loading && <p>Carregando projeto...</p>}
+            {loading && <div className="loading-container">
+                             <div className="loader"></div>
+                            <p className="loading-text">Carregando projeto...</p>
+                         </div>}
             {error && <p>{error}</p>}
             {project && (
                 <div>
                     <h1>{project.title}</h1>
                     <img src={project.image} alt={project.title} />
-                    <p className={styles.p_body}>{project.description}</p>
+                    <h3>Descrição do projeto</h3>
+                    <p>{project.description}</p>
                     <div className={styles.tags}>
                         {project.tagsArray.map((tag) => (
                             <p key={tag}><span>#</span>{tag}</p>
                         ))}
                     </div>
-                    <button onClick={joinProject} className="btn btn-dark">Participar do Projeto</button>
+                    <button onClick={joinProject} className="btn btn-outline">Participar do Projeto </button>
                     <h3>Participantes</h3>
-                    <ul>
+                    <ul className={styles.ul}>
                         {/* Supondo que project.participants seja uma lista de IDs de usuário */}
                         {project.participants && project.participants.map((participantId) => (
                             <li key={participantId}>{user.displayName}</li> // Idealmente, substitua participantId por nome ou email

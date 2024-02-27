@@ -60,9 +60,9 @@ function App() {
   if(loadingUser)
   return (
     <div className="loading-container">
-
-      <p className="loading-text">Carregando...</p>
-    </div>
+    <div className="loader"></div>
+    <p className="loading-text">Carregando...</p>
+  </div>
   );
 
   return (
@@ -82,7 +82,6 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/search" element={<Search />} />
               <Route path='/posts/:id' element={<Post />} />
-              <Route path='/project/:id' element={<Project />} />
               <Route path='/searchpage' element={<SearchPage />} />
               <Route path='/resetPassword' element={<ResetPassword />} />
               <Route 
@@ -98,6 +97,11 @@ function App() {
               <Route 
                 path='/posts/create' 
                 element={user ? <CreatePost /> : <Navigate to='/login' />} 
+              
+              />
+               <Route 
+                path='/project/:id' 
+                element={user ? <Project /> : <Navigate to='/login' />} 
               
               />
               <Route 

@@ -19,6 +19,11 @@
     border-radius: 15px;
 }
 
+.post_detail {
+    flex: 0 0 auto; /* Impede que o card mude de tamanho */
+
+  }
+
 .post_datail h2 {
     margin-bottom: 0.4em;
 }
