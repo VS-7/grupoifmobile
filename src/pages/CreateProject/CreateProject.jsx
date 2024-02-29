@@ -12,6 +12,7 @@ const CreateProject = () => {
   const [tags, setTags] = useState([]);
   const [maxParticipants, setMaxParticipants] = useState(""); // Novo estado para o limite de participantes
   const [formError, setFormError] = useState("");
+  const [link, setLink] = useState("");
 
   const { user } = useAuthValue();
   const { insertDocument, response } = useInsertDocument("projects"); // Alterado para "projects"
@@ -35,24 +36,30 @@ const CreateProject = () => {
     // Criar array de tags
     const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
+     // Criar array de links
+
+
     // Upload da imagem para o Firebase Storage
     try {
-      const imageUrl = await useUploadDocument(image, "projects"); // Assumindo que "projects" é o caminho do storage
+      // Adicionando linksArray ao objeto inserido
+      const imageUrl = await useUploadDocument(image, "projects");
       insertDocument({
         title,
         image: imageUrl,
         description,
         tagsArray,
-        maxParticipants: Number(maxParticipants), // Garantir que é um número
+        link, // Adicionado links ao documento
+        maxParticipants: Number(maxParticipants),
         uid: user.uid,
         createdBy: user.displayName,
-        currentParticipants: 1 // Inicialmente, apenas o criador
+        currentParticipants: 1
       });
-      navigate("/"); // Redirecionar conforme necessário
+      navigate("/");
     } catch (error) {
       setFormError("Erro ao fazer upload da imagem. Tente novamente.");
     }
   };
+
 
   return (
     <div className={styles.create_project}>
@@ -99,6 +106,16 @@ const CreateProject = () => {
               placeholder="Número máximo de participantes"
               onChange={(e) => setMaxParticipants(e.target.value)} 
               value={maxParticipants}/>
+          </label>
+          <label>
+            <span className={styles.optionalText}>(opcional)</span>
+            <span>Link:</span>
+            <input 
+              type="text" 
+              name="link" 
+              placeholder="Insira o link do projeto"
+              onChange={(e) => setLink(e.target.value)} 
+              value={link}/>
           </label>
           <label>
             <span>Tags:</span>

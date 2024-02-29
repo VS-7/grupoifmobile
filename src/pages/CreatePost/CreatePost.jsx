@@ -11,6 +11,7 @@ const CreatePost = () => {
   const [body, setBody] = useState("");
   const [tags, setTags] = useState([]);
   const [formError, setFormError] = useState("");
+  const [links, setLinks] = useState("");
 
   const { user } = useAuthValue();
   const { insertDocument, response } = useInsertDocument("posts");
@@ -34,14 +35,17 @@ const CreatePost = () => {
     // Create tags array
     const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
 
+    const linksArray = links.split(",").map((link) => link.trim());
+
     // Upload image to Firebase Storage
     try {
-      const imageUrl = await useUploadDocument(image, "posts"); // assuming "posts" is your storage path
+      const imageUrl = await useUploadDocument(image, "posts"); // assumindo que "posts" é o caminho no storage
       insertDocument({
         title,
         image: imageUrl,
         body,
         tagsArray,
+        linksArray, // Incluído links no documento
         uid: user.uid,
         createdBy: user.displayName,
       });
@@ -88,6 +92,15 @@ const CreatePost = () => {
               value={body}
             ></textarea>
           </label>
+          <label>
+            <span>Links:</span>
+            <input 
+              type="text" 
+              name="links" 
+              placeholder="Insira os links separados por vírgula"
+              onChange={(e) => setLinks(e.target.value)} 
+              value={links}/>
+        </label>
           <label>
             <span>Tags:</span>
             <input 

@@ -16,6 +16,7 @@ const EditProject = () => {
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState([]);
   const [maxParticipants, setMaxParticipants] = useState("");
+  const [link, setLink] = useState(""); // Estado para o link do projeto
   const [formError, setFormError] = useState("");
 
   useEffect(() => {
@@ -26,6 +27,7 @@ const EditProject = () => {
       setMaxParticipants(project.maxParticipants);
       const textTags = project.tagsArray.join(",");
       setTags(textTags);
+      setLink(project.link); // Atualiza o estado com o link do projeto
     }
   }, [project]);
 
@@ -66,6 +68,7 @@ const EditProject = () => {
       image,
       description,
       tagsArray,
+      link, // Inclui o link no objeto de dados
       maxParticipants: parseInt(maxParticipants, 10),
       uid: user.uid,
       createdBy: user.displayName,
@@ -113,6 +116,17 @@ const EditProject = () => {
                 placeholder="Insira as tags separadas por vírgula"
                 onChange={(e) => setTags(e.target.value)}
                 value={tags}
+              />
+            </label>
+            <label>
+              <span>Link:</span>
+              <input
+                type="text"
+                name="link"
+                required
+                placeholder="Insira o link do projeto"
+                onChange={(e) => setLink(e.target.value)}
+                value={link}
               />
             </label>
             <label>

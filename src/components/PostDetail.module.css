@@ -16,7 +16,7 @@
     max-width: 100%; 
     display: block;
     margin: 0 auto;
-    border-radius: 15px;
+    border-radius: 2px;
 }
 
 .post_detail {
@@ -59,7 +59,7 @@
     }
 
     .post_datail img {
-        border-radius: 10px; /* Ajustando o raio da borda para telas menores */
+        border-radius: 3px; /* Ajustando o raio da borda para telas menores */
     }
 
     .post_datail h2 {

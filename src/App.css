@@ -24,10 +24,10 @@
 
 .loader {
   border: 6px solid #fff;
-  border-top: 6px solid var(--color-btn); /* Cor do carregamento */
+  border-top: 6px solid var(--color--3); /* Cor do carregamento */
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   animation: spin 1s linear infinite; /* Animação de rotação */
 }
 

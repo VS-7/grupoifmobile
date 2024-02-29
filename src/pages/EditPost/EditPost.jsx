@@ -15,6 +15,7 @@ const EditPost = () => {
   const [image, setImage] = useState("")
   const [body, setBody] = useState("")
   const [tags, setTags] = useState([])
+  const [link, setLink] = useState(""); // Estado adicionado para o link
   const [formError, setFormError] = useState("");
 
   useEffect(() =>{
@@ -23,7 +24,7 @@ const EditPost = () => {
       setTitle(post.title)
       setBody(post.body)
       setImage(post.image)
-
+      setLink(post.link); // Atualize com o link do post
       const textTags = post.tagsArray.join(",");
 
       setTags(textTags);
@@ -68,6 +69,7 @@ const EditPost = () => {
       image,
       body,
       tagsArray,
+      link, // Inclua o link nos dados atualizados
       uid: user.uid,
       createdBy: user.displayName
     };
@@ -121,6 +123,17 @@ const EditPost = () => {
                 onChange={(e) => setBody(e.target.value)}
                 value={body}
               ></textarea>
+            </label>
+             <label>
+              <span>Link:</span>
+              <input
+                type="text"
+                name="link"
+                required
+                placeholder="Insira o link relacionado ao post"
+                onChange={(e) => setLink(e.target.value)}
+                value={link}
+              />
             </label>
             <label>
               <span>Tags:</span>

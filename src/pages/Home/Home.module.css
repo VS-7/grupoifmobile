@@ -5,17 +5,38 @@
     justify-content: center;
 }
 
-.search_form {
-    max-width: 100%;
+.searchBar {
     display: flex;
     justify-content: center;
-    margin-bottom: 1em;
-}
-
-.search_form input {
-    margin-right: 10px;
-    width: 50%;
-}
+    align-items: center;
+    position: relative;
+    
+    margin: 20px auto;
+  }
+  
+  .searchInput {
+    
+    font-size: 16px; /* Tamanho da fonte responsivo */
+    border: 0.5px solid var(--color--5); /* Borda sutil */
+    border-radius: 20px; /* Borda arredondada */
+    outline: none;
+    transition: border-color 0.3s; /* Transição suave para foco/hover */
+  }
+  
+  .searchButton {
+    position: absolute;
+    right: 10px; /* Posição dentro do input */
+    border: none;
+    background-color: transparent; /* Sem fundo para integrar com o input */
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .searchButton svg {
+    width: 24px; /* Tamanho do ícone */
+    height: 24px;
+    color: var(--color--5); /* Cor do ícone */
+  }
 
 .h3 {
     margin-left: 10px;
@@ -54,10 +75,6 @@
     padding: 10px 25px;
 }
 
-.projects_section {
-    margin-bottom: 2rem;
-  }
-  
   .projects_scroll {
     display: flex;
     overflow-x: auto; /* Permite rolagem horizontal */
@@ -85,7 +102,10 @@
   /* Assegura que o contêiner da seção de projetos ocupe a largura total */
 .projects_section {
     width: 100%;
+    display: flex;
+    justify-content: center;
     overflow: hidden; /* Esconde o overflow horizontal do contêiner pai, se necessário */
+    align-items: center;
   }
 
 @media (max-width: 768px) {
@@ -93,9 +113,19 @@
         font-size: 1.5em; /* Ajustando o tamanho da fonte para telas menores */
     }
 
-    .search_form input {
-        width: 100%; /* Faz com que o input ocupe toda a largura disponível */
-        max-width: none; /* Removendo a largura máxima do input */
+    .projects_section {
+    width: 100%;
+    display: block;
+    overflow: hidden; /* Esconde o overflow horizontal do contêiner pai, se necessário */
+  }
+    .searchInput {
+      padding: 8px 70px; /* Menos padding em telas menores */
+      font-size: 14px; /* Tamanho de fonte menor para economizar espaço */
+    }
+  
+    .searchButton svg {
+      width: 20px; /* Ícone menor */
+      height: 20px;
     }
      
 }

@@ -31,7 +31,7 @@ const SearchPage = () => {
         {/* Renderize os posts */}
         {posts && posts.map((post) => (
           <Link to={`/posts/${post.id}`} key={post.id} className={styles.publication_card}>
-            <img  src={post.image} alt={post.title} />
+            <img  src={post.image} alt={post.title} className={styles.post_item}/>
             
             {/* Adicione mais informações do post se necessário */}
           </Link>

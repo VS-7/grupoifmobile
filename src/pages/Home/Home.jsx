@@ -9,6 +9,7 @@ import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 // Components
 import PostDetail from "../../components/PostDetail";
 import ProjectDetail from "../../components/ProjectDetail"; // Certifique-se de importar
+import { CiSearch } from "react-icons/ci";
 
 const Home = () => {
   const [query, setQuery] = useState();
@@ -17,9 +18,7 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     if (query) {
       return navigate(`/search?q=${query}`);
     }
@@ -27,13 +26,20 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      
-      <form onSubmit={handleSubmit} className={styles.search_form}>
-        <input type="text" placeholder="Busque por tags..." onChange={(e) => setQuery(e.target.value)} />
-        <button className="btn btn-dark">Pesquisar</button>
-      </form>
+    <div className={styles.searchBar}>
+        <input
+          type="text"
+          className={styles.searchInput}
+          placeholder="Busque por tags..."
+          onChange={(e) => setQuery(e.target.value)}
+          value={query}
+        />
+        <button onClick={handleSubmit} className={styles.searchButton}>
+          <CiSearch />
+        </button>
+      </div>
       <div className={styles.projects_section}>
-        <h3 className={styles.h3} >Veja nossos projetos</h3>
+        <h3 className={styles.h3}>Veja nossos projetos</h3>
         <div className={styles.projects_scroll}>
           {loadingProjects && <p>Carregando projetos...</p>}
           {projects && projects.map((project) => <ProjectDetail key={project.id} project={project} />)}

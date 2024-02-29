@@ -30,8 +30,8 @@
 }
   
   .image_container img {
-    width: 80px; /* Largura fixa para a imagem */
-    height: 80px; /* Altura fixa para a imagem */
+    width: 100px; /* Largura fixa para a imagem */
+    height: 100px; /* Altura fixa para a imagem */
     object-fit: cover; /* Garante que a imagem cubra o espaço */
     border-radius: 50%; /* Torna a imagem redonda */
     margin-right: 20px; /* Espaço entre a imagem e o texto */

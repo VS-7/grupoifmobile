@@ -3,13 +3,13 @@
   --color--1: #060607;
   --color--2: #0b0b0c;
   --color--3: #21262d;
-  --color--4: #30363d;
+  --color--4: #646668;
   --color--5: #ffffff;
   --color--6: #ffffff;
   --color--7: #ffffff;
   --color--8: #e4e4e4; 
   --color-error: #721c24;
-  --color-btn: #2ea043;
+  --color-btn: #ffffff;
   --color-navbar: #000000;
   --color-link: #58a6ff;
   background-color: var(--color--1);
@@ -25,9 +25,9 @@
   --color--5: #606060;
   --color--6: #303030;
   --color--7: #000000;
-  --color--8: #1e1e1e;
+  --color--8: #2e2e2e;
   --color-error: #a94442;
-  --color-btn: #4CAF50;
+  --color-btn: #000000;
   --color-navbar: #f8f9fa;
   --color-link: #007bff;
   background-color: var(--color--1);
@@ -77,9 +77,9 @@ form {
   margin: 0 auto;
   gap: 16px;
   background-color: var(--color--2);
-  border-radius: 6px;
+  border-radius: 3px;
   padding: 16px;
-  border: 1px solid var(--color--3);
+  border: 1px solid var(--color--4);
 }
 
 @media (max-width: 768px) {
@@ -131,7 +131,7 @@ textarea {
 .btn {
   font-size: 1em;
   background-color: var(--color-btn);
-  color: var(--color--7);
+  color: var(--color--1);
   border: 1px solid rgba(240, 246, 252, 0.1);
   display: inline-block;
   padding: 10px 16px;
@@ -140,14 +140,19 @@ textarea {
   cursor: pointer;
   border-radius: 6px;
   transition: background-color 120ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn:hover {
-  background-color: #238636;
+  background-color: var(--color--8);
 }
 
 .btn.btn-dark {
+  color: var(--color--6);
   background-color: var(--color--4);
+  align-items: center;
 }
 
 .btn.btn-dark:hover {

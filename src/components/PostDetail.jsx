@@ -20,7 +20,7 @@ const PostDetail = ({ post }) => {
         <h2>{post.title}</h2>
         <p className={styles.createdBy}>{post.createdBy}</p>
         {/* Adicionando a descrição truncada */}
-        <p className={styles.body}>{truncate(post.body, 30)}</p>
+        <p className={styles.body}>{truncate(post.body, 40)}</p>
         <div className={styles.tags}>
           {post.tagsArray.map((tag) => (
             <p key={tag}>

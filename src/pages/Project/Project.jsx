@@ -27,6 +27,13 @@ const Project = () => {
         }
     };
 
+    // Ajuste para abrir diretamente o link único do projeto
+    const openLink = () => {
+        if(project.link) {
+            window.open(project.link, '_blank');
+        }
+    };
+
     return (
         <div className={styles.project_container}>
             {loading && <div className="loading-container">
@@ -39,24 +46,28 @@ const Project = () => {
                     <h1>{project.title}</h1>
                     <img src={project.image} alt={project.title} />
                     <h3>Descrição do projeto</h3>
-                    <p>{project.description}</p>
+                    <p className={styles.p_body}>{project.description}</p>
                     <div className={styles.tags}>
                         {project.tagsArray.map((tag) => (
                             <p key={tag}><span>#</span>{tag}</p>
                         ))}
                     </div>
-                    <button onClick={joinProject} className="btn btn-outline">Participar do Projeto </button>
+                    <button onClick={joinProject} className="btn btn-outline">Participar do Projeto</button>
+                    {project.link && (
+                        <div>
+                            <h3>Link do Projeto</h3>
+                            <button onClick={openLink} className="btn btn-light">Acessar Projeto</button>
+                        </div>
+                    )}
                     <h3>Participantes</h3>
                     <ul className={styles.ul}>
-                        {/* Supondo que project.participants seja uma lista de IDs de usuário */}
                         {project.participants && project.participants.map((participantId) => (
-                            <li key={participantId}>{user.displayName}</li> // Idealmente, substitua participantId por nome ou email
+                            <li key={participantId}>{/* Aqui deveria idealmente buscar o nome do participante usando o participantId */}</li>
                         ))}
                     </ul>
                     <Link to="/" className="btn btn-dark"><IoIosArrowBack size="1em"/> Voltar</Link>
                 </div>
             )}
-           
         </div>
     );
 }
