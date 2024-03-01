@@ -29,11 +29,13 @@ const Dashboard = () => {
   return (
     <div className={styles.dashboard}>
       <div className={styles.profile_section}>
-        <img src='..assets/default.webp' alt="Perfil" className={styles.profile_photo} />
+       
         {user.displayName}
+       <span>{user.email}</span>
+       {user.createdAt}
         <div className={styles.profile_actions}>
-          <Link to="/edit-profile" className="btn btn-dark">Editar Perfil</Link>
-          <Link to="/dashboard/settings" className="btn btn-dark"><FaGear /></Link>
+          <Link to="/edit-profile" className={styles.btn}>Editar Perfil</Link>
+          <Link to="/dashboard/settings" className={styles.btnConfig}><FaGear /></Link>
         </div>
       </div>
       <h3>Suas Publicações</h3>

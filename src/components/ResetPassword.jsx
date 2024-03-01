@@ -38,6 +38,7 @@ const ResetPassword = () => {
 
   return (
     <div className={styles.reset}>
+       <img src="../../../public/IF.svg" alt="" />
       <h2>Redefinir Senha</h2>
       <p>Forneça seu e-mail para redefinição de senha</p>
         <form onSubmit={handleSubmit}>

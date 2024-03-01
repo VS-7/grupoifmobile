@@ -1,10 +1,10 @@
 .project_container {
     text-align: center;
-    max-width: 60%;
+    max-width: 40%;
     margin: 0 auto;
     gap: 16px;
     background-color: var(--color--2);
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 16px;
     border: 1px solid var(--color--3);
     overflow: hidden; /* Adiciona isso para prevenir overflow */
@@ -29,6 +29,80 @@
     margin-left: 50px;
     word-wrap: break-word; /* Adiciona isso para quebrar palavras longas */
     max-width: 100%; /* Garante que o conteúdo não exceda o container */
+}
+
+.participantsContainer {
+  padding: 20px;
+  border: 1px solid var(--color--4); /* Certifique-se de que var(--color--2) esteja definida ou substitua por uma cor, e.g., #ccc */
+  display: flex;
+  align-items: center; /* Alterado para center para alinhar os itens verticalmente no centro */
+  justify-content: start; /* Para distribuir o conteúdo dentro do card */
+  border-radius: 10px; /* Arredondamento das bordas */
+  margin: 20px 0;
+
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  border: none;
+  background:none;
+  color: var(--color--6);
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.icon:hover{
+  color: #60FEBC;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate {
+  animation: pulse 0.5s;
+}
+
+.btnAcess {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--color--6);
+  color: var(--color--2);
+  border: none;
+  margin: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnAcess:hover{
+  background-color: var(--color--4);
+}
+
+.links {
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnback {
+  display: flex;
+  align-items: center;
+  margin: 5px;
+  font-weight: bold;
+  color: var(--color--6);
 }
 
 .tags p {
@@ -81,9 +155,9 @@
     .project_container {
         text-align: center;
         max-width: 90%;
-        margin: 50px auto;
+        margin-top: -0.3vh;
         gap: 16px;
-        border-radius: 15px;
+        border-radius: 3px;
     }
 
     .p_body {

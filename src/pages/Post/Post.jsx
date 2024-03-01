@@ -3,6 +3,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useParams, Link } from "react-router-dom";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import Comment from '../../components/Comment';
+import { HiOutlineArrowUpRight } from "react-icons/hi2";
 
 const Post = () => {
     const { id } = useParams();
@@ -18,8 +19,9 @@ const Post = () => {
             {loading && <p>Carregando publicação...</p>}
             {error && <p>{error}</p>}
             {post && (
-                <>
-                    <h1>{post.title}</h1>
+                <>  
+                    <Link to="/" className={styles.btnback}><IoIosArrowBack size="1em"/> Voltar</Link>
+                    <h3>{post.title}</h3>
                     <img src={post.image} alt={post.title} />
                     <h3>Esta publicação fala sobre</h3>
                     <p className={styles.p_body}>{post.body}</p>
@@ -33,11 +35,11 @@ const Post = () => {
                         <div className={styles.links}>
                             <h3>Links úteis</h3>
                             {post.linksArray.map((link, index) => (
-                                <button key={index} onClick={() => openLink(link)} className="btn btn-light">Link {index + 1}</button>
+                                <button key={index} onClick={() => openLink(link)} className={styles.btnAcess}>Acessar  <HiOutlineArrowUpRight size="1em"/></button>
                             ))}
                         </div>
                     )}
-                    <Link to="/" className="btn btn-dark"><IoIosArrowBack size="1em"/> Voltar</Link>
+                    
                 </>
             )}
         </div>

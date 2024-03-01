@@ -1,5 +1,6 @@
 .login {
     text-align: center;
+    margin-top: 8vh;
 }
 
 .login p {
@@ -8,4 +9,15 @@
 
 .login button {
     width: 100%;
+}
+
+.resetPasswordLink {
+    border: 1px solid var(--color--4);
+    padding: 8px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.a {
+    color: var(--color-link);
 }

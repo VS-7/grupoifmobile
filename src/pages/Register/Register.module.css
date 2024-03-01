@@ -1,5 +1,6 @@
 .register {
     text-align: center;
+    margin-top: 8vh;
 }
 
 .register p{
@@ -10,5 +11,9 @@
     width: 100%;
 }
 
+
+.a {
+    color: var(--color-link);
+}
 
 

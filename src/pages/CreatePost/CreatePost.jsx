@@ -72,7 +72,6 @@ const CreatePost = () => {
               value={title}/>
           </label>
           <label>
-            <span className={styles.optionalText}>(opcional)</span>
             <span>Imagem:</span>
             <input 
               className={styles.fileInput}

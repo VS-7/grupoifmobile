@@ -31,9 +31,10 @@
     margin-bottom: 20px;
 }
 
-.about img{
+.img{
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 

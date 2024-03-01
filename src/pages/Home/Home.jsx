@@ -26,18 +26,10 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-    <div className={styles.searchBar}>
-        <input
-          type="text"
-          className={styles.searchInput}
-          placeholder="Busque por tags..."
-          onChange={(e) => setQuery(e.target.value)}
-          value={query}
-        />
-        <button onClick={handleSubmit} className={styles.searchButton}>
-          <CiSearch />
-        </button>
-      </div>
+      <form onSubmit={handleSubmit} className={styles.search_form}>
+        <input className={styles.input} type="text" placeholder="Busque por tags..." onChange={(e) => setQuery(e.target.value)} />
+        <button className={styles.btnSearch}>Pesquisar</button>
+      </form>
       <div className={styles.projects_section}>
         <h3 className={styles.h3}>Veja nossos projetos</h3>
         <div className={styles.projects_scroll}>

@@ -145,7 +145,7 @@ const EditPost = () => {
                 onChange={(e) => setTags(e.target.value)} 
                 value={tags}/>
             </label>
-            {!response.loading && <button className="btn btn-dark"><MdEdit size="1.5em"/></button>}
+            {!response.loading && <button className="btn"><MdEdit size="1.5em"/></button>}
             {response.loading && (
             <button className="btn" disabled>
               Aguarde...

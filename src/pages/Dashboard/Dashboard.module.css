@@ -28,6 +28,7 @@
   align-items: center; /* Centraliza os elementos horizontalmente */
   justify-content: center; /* Opcional, dependendo do layout desejado */
   margin-bottom: 2em;
+  margin-top: 2vh;
 }
 
 .profile_photo {
@@ -146,6 +147,29 @@
 
 .tab_buttons .icon {
   color: var(--color--6); /* Aplica a cor do tema aos ícones */
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color--4);
+  padding: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  color: var(--color--6);
+}
+
+.btnConfig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: var(--color--7);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-left: -6px;
+  color: var(--color--2);
 }
 
 @keyframes tabHover {

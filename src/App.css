@@ -18,13 +18,13 @@
 
 .loading-text {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 15px;
   color: #fff; /* Ajuste a cor conforme o tema */
 }
 
 .loader {
-  border: 6px solid #fff;
-  border-top: 6px solid var(--color--3); /* Cor do carregamento */
+  border: 6px solid var(--color--3);
+  border-top: 6px solid var(--color-link); /* Cor do carregamento */
   border-radius: 50%;
   width: 30px;
   height: 30px;

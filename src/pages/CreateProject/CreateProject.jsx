@@ -64,7 +64,7 @@ const CreateProject = () => {
   return (
     <div className={styles.create_project}>
         <h2>Criar Projeto</h2>
-        <p>Descreva o projeto e convide outros para participarem!</p>
+        <p>Descreva o projeto e convide outros à participarem!</p>
         <form onSubmit={handleSubmit}>
           <label>
             <span>Título:</span>
@@ -77,7 +77,6 @@ const CreateProject = () => {
               value={title}/>
           </label>
           <label>
-            <span className={styles.optionalText}>(opcional)</span>
             <span>Imagem:</span>
             <input 
               className={styles.fileInput}

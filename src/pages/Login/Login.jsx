@@ -31,7 +31,8 @@ const Login = () => {
 
   return (
     <div className={styles.login}>
-      <h1>Entrar</h1>
+      <img src="../../../public/IF.svg" alt="" />
+      <h2>Entrar no IF mobile</h2>
       <p>Faça o login para utilizar o sistema</p>
       <form onSubmit={handleSubmit}>
         <label>
@@ -63,11 +64,11 @@ const Login = () => {
        
         
         <p className={styles.resetPasswordLink}>
-          <a href="/resetPassword">Esqueci minha senha</a>
+          <a href="/resetPassword">Esqueceu sua senha?</a>
         </p>
       </form>
-      <p className={styles.resetPasswordLink}>
-         Não possui uma conta? <a href="/register">Cadastre-se aqui</a>
+      <p>
+         Não possui uma conta? <a href="/register" className={styles.a}>Inscreva-se aqui</a>
         </p>
     </div>
   );

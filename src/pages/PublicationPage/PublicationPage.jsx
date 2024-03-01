@@ -11,7 +11,7 @@ const PublicationPage = () => {
         <Link to="/posts/create">
           <div className={styles.cardEscolha}>
           <h3>Criar Publicação ✨</h3>
-          <p>Escolha caso queira criar uma nova publicação e compartilhar algo</p>
+          <p>Escolha caso queira criar uma nova publicação e compartilhar algo.</p>
           </div>
         </Link>
         <Link to="/project/create">

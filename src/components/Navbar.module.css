@@ -27,8 +27,31 @@
     z-index: 100; /* Eleva acima do conteúdo da página */
 }
 
+/* Estilo para o ícone */
+.styles_icon {
+    transition: color 0.3s ease; /* Transição suave da cor */
+  }
+  
+  /* Estilo para o ícone ativo */
+  .styles_activeIcon {
+    color: var(--color-link); /* Cor quando ativo. Ajuste conforme necessário */
+  }
+  
+  /* Estilo para aumentar o ícone sem afetar a navbar */
+  .styles_iconContainer {
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o ícone na navbar */
+    justify-content: center; /* Centraliza horizontalmente o ícone */
+    height: 100%; /* Garante que o container do ícone tenha a altura total da navbar */
+  }
+  
+  .styles_iconContainer > svg {
+    margin: 0; /* Remove margens para permitir que o ícone cresça sem afetar a navbar */
+    transform: scale(1.5); /* Aumenta o tamanho do ícone. Ajuste o valor conforme necessário */
+  }
+
 .headerContent img {
-    width: 30px;
+    width: 28px;
 }
 
 .navbar {

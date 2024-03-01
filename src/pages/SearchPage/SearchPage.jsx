@@ -22,9 +22,9 @@ const SearchPage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className={styles.search_form}>
-        <input type="text" placeholder="Busque por tags..." onChange={(e) => setQuery(e.target.value)} />
-        <button className="btn btn-dark">Pesquisar</button>
+       <form onSubmit={handleSubmit} className={styles.search_form}>
+        <input className={styles.input} type="text" placeholder="Busque por tags..." onChange={(e) => setQuery(e.target.value)} />
+        <button className={styles.btnSearch}>Pesquisar</button>
       </form>
       <h3 className={styles.h3}>Todas as Publicações</h3>
       <div className={styles.publication_grid}>

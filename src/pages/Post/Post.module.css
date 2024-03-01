@@ -1,10 +1,10 @@
 .post_container {
     text-align: center;
-    max-width: 60%;
+    max-width: 40%;
     margin: 50px auto;
     gap: 16px;
     background-color: var(--color--2);
-    border-radius: 30px;
+    border-radius: 10px;
     padding: 16px;
     border: 1px solid var(--color--3);
     overflow: hidden; /* Adiciona isso para prevenir overflow */
@@ -20,7 +20,7 @@
 }
 
 .post_container img {
-    border-radius: 15px;
+    border-radius: 3px;
     max-width: 100%;
 }
 
@@ -30,6 +30,38 @@
     margin-left: 50px;
     word-wrap: break-word; /* Adiciona isso para quebrar palavras longas */
     max-width: 100%; /* Garante que o conteúdo não exceda o container */
+}
+
+.btnAcess {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--color--6);
+    color: var(--color--2);
+    border: none;
+    margin: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btnAcess:hover {
+    background-color: var(--color--4);
+}
+
+.links {
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnback {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    font-weight: bold;
+    color: var(--color--6);
 }
 
 
@@ -46,9 +78,9 @@
     .post_container {
         text-align: center;
         max-width: 90%;
-        margin: 50px auto;
+        margin-top: -0.3vh;
         gap: 16px;
-        border-radius: 15px;
+        border-radius: 3px;
     }
 
     .p_body {

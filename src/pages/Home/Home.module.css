@@ -5,39 +5,33 @@
     justify-content: center;
 }
 
-.searchBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    
-    margin: 20px auto;
-  }
-  
-  .searchInput {
-    
-    font-size: 16px; /* Tamanho da fonte responsivo */
-    border: 0.5px solid var(--color--5); /* Borda sutil */
-    border-radius: 20px; /* Borda arredondada */
-    outline: none;
-    transition: border-color 0.3s; /* Transição suave para foco/hover */
-  }
-  
-  .searchButton {
-    position: absolute;
-    right: 10px; /* Posição dentro do input */
-    border: none;
-    background-color: transparent; /* Sem fundo para integrar com o input */
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .searchButton svg {
-    width: 24px; /* Tamanho do ícone */
-    height: 24px;
-    color: var(--color--5); /* Cor do ícone */
-  }
+.search_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -2vh;
+}
 
+.input {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  width: 360px;
+  
+}
+
+.btnSearch {
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 12px;
+  margin-left: -10px;
+  border: 1px solid var(--color--4);
+  background-color: var(--color--2);
+  color: var(--color--5);
+  font-weight: bold;
+}
+
+  
+  
 .h3 {
     margin-left: 10px;
 }
@@ -118,15 +112,7 @@
     display: block;
     overflow: hidden; /* Esconde o overflow horizontal do contêiner pai, se necessário */
   }
-    .searchInput {
-      padding: 8px 70px; /* Menos padding em telas menores */
-      font-size: 14px; /* Tamanho de fonte menor para economizar espaço */
-    }
-  
-    .searchButton svg {
-      width: 20px; /* Ícone menor */
-      height: 20px;
-    }
+
      
 }
 

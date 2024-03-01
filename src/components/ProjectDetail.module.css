@@ -3,11 +3,11 @@
     align-items: center;
     text-decoration: none;
     color: inherit; /* Garante que o texto siga a cor padrão do texto, não do link */
-    margin: 10px 0;
     padding: 10px;
-    border: 1px solid var(--color--4); /* Cor da borda opcional */
+    border: 1px solid var(--color--3); /* Cor da borda opcional */
     border-radius: 8px; /* Bordas arredondadas */
     transition: background-color 0.3s; /* Efeito de hover suave */
+    background-color: var(--color--2);
   }
 
 

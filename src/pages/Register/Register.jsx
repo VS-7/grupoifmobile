@@ -40,8 +40,8 @@ const Register = () => {
 
   return (
     <div className={styles.register}>
-        <h1>Cadastre-se</h1>
-        <p>Crie seu usuário e compartilhe seus conhecimentos</p>
+         <img src="../../../public/IF.svg" alt="" />
+        <h2>Cadastre-se no IF mobile</h2>
             <form onSubmit={handleSubmit}>
                     <label>
                         <span>Nome:</span>
@@ -95,6 +95,9 @@ const Register = () => {
                 )}
                 {error && <p className="error">{error}</p>}
         </form>
+        <p>
+         Já tem uma conta? <a href="/register" className={styles.a}>Entrar</a>
+        </p>
     </div>
   )
 }

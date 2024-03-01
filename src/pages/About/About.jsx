@@ -17,9 +17,8 @@ const About = () => {
           <p>Fique à vontade para explorar nosso conteúdo, participar de nossas atividades e fazer parte desta comunidade.</p>
           <p>Seja bem-vindo e junte-se a nós nessa jornada!</p>
           <p>Apoio PET Conexões Ciência da Computação</p>
-          <img src="../../../public/pet.png" alt="pet" />
+          <img src="../../../public/pet.png" alt="pet" className={styles.img}/>
           <p>Equipe do Grupo de Estudo de Desenvolvimento Mobile - IF Sudeste MG</p>
-          <img src="" alt="" />
         </div>
     </div> 
         <p>Venha compartilhar seus conhecimentos!</p>

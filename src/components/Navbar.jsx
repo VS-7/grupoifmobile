@@ -14,7 +14,7 @@ const Navbar = () => {
         <>
             <div className={styles.headerContent}>
                 <NavLink to="/" className={styles.brand}>
-                    If <span>mobile</span>
+                    <img src="../../public/IF.svg" alt="" />
                 </NavLink>
             </div>
             <nav className={styles.navbar}>
