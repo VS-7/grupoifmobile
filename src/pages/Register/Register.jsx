@@ -40,7 +40,7 @@ const Register = () => {
 
   return (
     <div className={styles.register}>
-         <img src="../../../public/IF.svg" alt="" />
+         <img src="../../../../IF.svg" alt="" />
         <h2>Cadastre-se no IF mobile</h2>
             <form onSubmit={handleSubmit}>
                     <label>
