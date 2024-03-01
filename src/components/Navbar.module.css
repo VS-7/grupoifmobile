@@ -2,7 +2,7 @@
 
 
 :root {
-    --color-navbar: #060607; /* Cor de fundo da navbar */
+    --color-navbar: #f0f0f0; /* Cor de fundo da navbar */
     --color--2: #cccccc; /* Sombra */
     /* Cor do texto */
     --color-active: #007bff; /* Cor do link ativo */
@@ -22,7 +22,7 @@
     left: 0;
     width: 100%;
     padding: 0.5em 1em;
-    background-color: var(--color-navbar);
+    background-color: var(--color--1);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     z-index: 100; /* Eleva acima do conteúdo da página */
 }
