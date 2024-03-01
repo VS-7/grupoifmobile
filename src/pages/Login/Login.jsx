@@ -31,7 +31,7 @@ const Login = () => {
 
   return (
     <div className={styles.login}>
-      <img src="../../../public/IF.svg" alt="" />
+      <img src="../../../../IF.svg" alt="" />
       <h2>Entrar no IF mobile</h2>
       <p>Faça o login para utilizar o sistema</p>
       <form onSubmit={handleSubmit}>
