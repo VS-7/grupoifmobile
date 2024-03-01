@@ -14,7 +14,7 @@ const Navbar = () => {
         <>
             <div className={styles.headerContent}>
                 <NavLink to="/" className={styles.brand}>
-                    <img src="../../public/IF.svg" alt="" />
+                    <img src="../../../IF.svg" alt="" />
                 </NavLink>
             </div>
             <nav className={styles.navbar}>
