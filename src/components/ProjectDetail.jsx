@@ -20,7 +20,7 @@ const ProjectDetail = ({ project }) => {
       </div>
       <div className={styles.text_container}>
         <h4>{truncate(project.title, 20)}</h4>
-        <p className={styles.createdBy}>By: {truncate(project.createdBy, 20)}</p>
+        <p className={styles.createdBy}>@{truncate(project.createdBy, 20)}</p>
         <div className={styles.tags}>
           {project.tagsArray && project.tagsArray.slice(0, 2).map((tag) => (
             <p key={tag}><span>#</span>{tag}</p>

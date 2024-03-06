@@ -31,6 +31,11 @@
   margin-top: 2vh;
 }
 
+.back {
+  display: flex;
+  align-items: start;
+}
+
 .profile_photo {
   max-width: 100%; /* Garante que a imagem não ultrapasse o tamanho do contêiner */
   height: auto; /* Mantém a proporção da imagem */

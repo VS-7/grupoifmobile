@@ -9,23 +9,50 @@ import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 // Components
 import PostDetail from "../../components/PostDetail";
 import ProjectDetail from "../../components/ProjectDetail"; // Certifique-se de importar
-import { CiSearch } from "react-icons/ci";
+import CreatePost from "../../components/ComponentCreatePost";
+import CreateProject from "../../components/ComponentCreateProject";
+
+import { FaGear } from "react-icons/fa6";
 
 const Home = () => {
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState('');
+  const [showCreatePost, setShowCreatePost] = useState(true); // Inicializa como true para exibir por padrão
+  const [showCreateProject, setShowCreateProject] = useState(false); // Mantém oculto até ser solicitado
+
   const { documents: posts, loading: loadingPosts } = useFetchDocuments("posts");
-  const { documents: projects, loading: loadingProjects } = useFetchDocuments("projects"); // Simula um hook para buscar projetos
+  const { documents: projects, loading: loadingProjects } = useFetchDocuments("projects");
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (query) {
-      return navigate(`/search?q=${query}`);
+      navigate(`/search?q=${query}`);
     }
+  };
+
+  // Funções para alternar a visibilidade dos componentes
+  const toggleCreatePostVisibility = () => {
+    setShowCreatePost(true);
+    setShowCreateProject(false); // Esconde CreateProject quando CreatePost é mostrado
+  };
+
+  const toggleCreateProjectVisibility = () => {
+    setShowCreateProject(true);
+    setShowCreatePost(false); // Esconde CreatePost quando CreateProject é mostrado
   };
 
   return (
     <div className={styles.home}>
+      <div className={styles.header}>
+        {/* Botões atualizados para controlar a visibilidade dos componentes */}
+        <button className={styles.btnHeader} onClick={toggleCreatePostVisibility}>Publicação</button>
+        <button className={styles.btnHeader} onClick={toggleCreateProjectVisibility}>Projeto</button>
+        <Link to="/config" className={styles.btnConfig}><FaGear /></Link>
+      </div>
+      {/* Renderiza condicionalmente os componentes baseado no estado */}
+      {showCreatePost && <CreatePost />}
+      {showCreateProject && <CreateProject />}
       <form onSubmit={handleSubmit} className={styles.search_form}>
         <input className={styles.input} type="text" placeholder="Busque por tags..." onChange={(e) => setQuery(e.target.value)} />
         <button className={styles.btnSearch}>Pesquisar</button>

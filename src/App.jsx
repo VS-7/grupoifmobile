@@ -27,6 +27,7 @@ import ResetPassword from './components/ResetPassword';
 import CreateProject from './pages/CreateProject/CreateProject';
 import Project from './pages/Project/Project';
 import EditProject from './pages/EditProject/EditProject';
+import EditProfile from './pages/EditProfile/EditProfile';
 import PublicationPage from './pages/PublicationPage/PublicationPage';
 import SearchPage from './pages/SearchPage/SearchPage';
 
@@ -67,6 +68,7 @@ function App() {
 
   return (
     <div className='App'>
+    <div className='main-container'>
      <button onClick={toggleTheme} style={{ position: 'fixed', zIndex: 1000, top: '15px', right: '20px', background: 'none', border: 'none', cursor: 'pointer', color: 'inherit' }}>
         {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
       </button>
@@ -117,6 +119,10 @@ function App() {
                 path='/project/edit/:id' 
                 element={user ? <EditProject /> : <Navigate to='/login' />} 
               />
+               <Route 
+                path='/dashboard/edit-profile' 
+                element={user ? <EditProfile /> : <Navigate to='/login' />} 
+              />
               <Route 
                 path='/dashboard'
                 element={user ? <Dashboard /> : <Navigate to='/login' />} />
@@ -128,6 +134,7 @@ function App() {
           
         </BrowserRouter>
       </AuthProvider>
+      </div>
     </div>
   )
 }

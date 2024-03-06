@@ -1,3 +1,4 @@
+
 .post_container {
     text-align: center;
     max-width: 40%;
@@ -71,6 +72,21 @@
 
 .tags span {
     font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .post_container {
+        text-align: center;
+        max-width: 100%;
+        margin-top: -0.3vh;
+        gap: 16px;
+        border-radius: 3px;
+    }
+
+    .p_body {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
 }
 
 

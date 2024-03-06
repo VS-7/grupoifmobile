@@ -54,20 +54,6 @@
     width: 28px;
 }
 
-.navbar {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 0.5em 0;
-    padding-bottom: calc(0.5em + var(--safe-area-inset-bottom)); /* Ajuste para dispositivos com notch */
-    box-shadow: 0 -2px 10px var(--color--2);
-    background-color: var(--color-navbar);
-    z-index: 100;
-}
-
 
 
 .links_list {
@@ -134,8 +120,21 @@
 
 @media (max-width: 768px) {
     .navbar {
+        display: flex;
+        justify-content: center;
         flex-direction: column;
+        position: fixed;
+        bottom: 0;
+        left: 0px;
+        width: 100%;
+        padding: 0.5em 0;
+        padding-bottom: calc(0.5em + var(--safe-area-inset-bottom)); /* Ajuste para dispositivos com notch */
+        box-shadow: 0 -2px 10px var(--color--2);
+        background-color: var(--color-navbar);
+        z-index: 100;
     }
+
+    
 
     .links_list {
         flex-direction: row;
@@ -148,3 +147,48 @@
 
     /* Remova a alteração de direção do flex de .headerContent para evitar empilhar a marca e o botão de sair verticalmente */
 }
+
+@media (min-width: 768px) {
+
+    .footerContent { /* Assumindo que você tem elementos de cabeçalho e rodapé */
+        display: none; /* Oculta a parte superior e inferior */
+      }
+
+    .headerContent{
+        position: fixed;
+        left: calc((100vw - 800px) / 2 - 95px); 
+        width: 0%;
+    }
+      .navbar {
+        position: fixed;
+        left: calc((100vw - 800px) / 2 - 95px); /* Ajusta '80px' para a largura da sua navbar */
+        top: 0;
+        height: 100vh;
+        width: 80px; /* Ajuste conforme necessário */
+        z-index: 1000;
+      }
+  
+    .links_list {
+      display: flex;
+      flex-direction: column; /* Ícones na vertical */
+      align-items: center; /* Centraliza os ícones horizontalmente */
+      height: 50%;
+    }
+  
+    .icon, .activeIcon { /* Ajusta para aumentar o tamanho dos ícones */
+        font-size: 1.6em; /* Aumenta o tamanho do ícone */
+        margin: 15px 0; /* Aumenta o espaçamento entre os ícones */
+      }
+      
+      .iconAddCircle {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+        background-color: var(--color-link);
+        color: var(--color--1);
+        border-radius: 100%;
+        margin-top: auto; /* Empurra o ícone para o final da barra de navegação */
+    }
+  
+    /* Estilizações adicionais para ajustar o ícone ativo e outros elementos conforme necessário */
+  }

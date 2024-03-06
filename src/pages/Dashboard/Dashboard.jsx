@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useAuthValue } from "../../../context/AuthContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useDeleteDocument } from "../../hooks/useDeleteDocument";
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config'; // Ajuste o caminho conforme necessário
 import { MdVisibility, MdEdit, MdDelete } from "react-icons/md";
 import { FaGear } from "react-icons/fa6";
 import { FaProjectDiagram } from "react-icons/fa";
@@ -17,6 +19,22 @@ const Dashboard = () => {
   const { deleteDocument: deleteProject } = useDeleteDocument("projects");
   
   const [activeTab, setActiveTab] = useState("posts");
+  const [userDetails, setUserDetails] = useState({ bio: '', profileImage: '' });
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      const docRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setUserDetails(docSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    };
+
+    fetchUserDetails();
+  }, [user.uid]);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -28,13 +46,13 @@ const Dashboard = () => {
 
   return (
     <div className={styles.dashboard}>
-      <div className={styles.profile_section}>
-       
-        {user.displayName}
-       <span>{user.email}</span>
-       {user.createdAt}
+       <div className={styles.profile_section}>
+        <img src={userDetails.profileImage || '/path/to/default/avatar.png'} alt="Profile" className={styles.profile_avatar} />
+        <h2>{user.displayName}</h2>
+        <span>{user.email}</span>
+        <p>{userDetails.bio || 'Nenhuma biografia adicionada.'}</p>
         <div className={styles.profile_actions}>
-          <Link to="/edit-profile" className={styles.btn}>Editar Perfil</Link>
+          <Link to="/dashboard/edit-profile" className={styles.btn}>Editar Perfil</Link>
           <Link to="/dashboard/settings" className={styles.btnConfig}><FaGear /></Link>
         </div>
       </div>

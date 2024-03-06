@@ -34,6 +34,16 @@
   color: var(--color--6);
 }
 
+.main-container {
+  max-width: 800px; /* Ajuste conforme necessário para sua plataforma */
+  margin: 0 auto; /* Centraliza o contêiner horizontalmente */
+  border-left: 1px solid var(--color--3); /* Linha delimitando à esquerda */
+  border-right: 1px solid var(--color--3); /* Linha delimitando à direita */
+  padding: 10px; /* Espaçamento interno para não colar o conteúdo nas bordas */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra opcional para destacar */
+  background-color: var(--color--1); /* Cor de fundo conforme o tema */
+}
+
 body {
   background-color: var(--color--1);
   color: var(--color--6);
@@ -75,20 +85,28 @@ nav button:hover {
 }
 
 /* form styles */
-
-form {
-  max-width: 360px;
-  margin: 0 auto;
-  gap: 16px;
-
-  border-radius: 3px;
-  padding: 16px;
-  
+@media (min-width: 768px) {
+  form {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 3px;
+    padding: 16px;
+  }
 }
 
 @media (max-width: 768px) {
   form {
     max-width: 80%;
+    margin: 0 auto;
+    gap: 16px;
+    border-radius: 3px;
+    padding: 16px;
+  }
+  .main-container {
+    max-width: 100%; /* Permite que o contêiner ocupe a largura total em dispositivos móveis */
+    border-left: none; /* Remove as linhas delimitadoras em dispositivos móveis */
+    border-right: none; /* Remove as linhas delimitadoras em dispositivos móveis */
+    padding: 0; /* Ajusta o espaçamento interno para dispositivos móveis */
   }
 }
 

@@ -1,0 +1,72 @@
+.create_post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color--5);
+    width: 100%;
+    border-bottom: 1px solid var(--color--3);
+    margin-bottom: 20px;
+  }
+  
+  .create_post textarea {
+    width: 100%;
+    border: none;
+    padding: 12px;
+    margin-bottom: 10px;
+    resize: none; 
+    font-size: large;
+  }
+  
+  .create_post .buttons {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 10px;
+  }
+  
+  
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--color-link);
+    color: var(--color--1);
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #00cb87;
+  }
+  
+  .create_post .iconButton {
+    background-color: transparent;
+    border: none;
+    color: var(--color-link);
+    cursor: pointer;
+    font-size: 20px; /* Tamanho dos ícones */
+    margin-right: 10px;
+  }
+  
+  .create_post .iconButton:hover {
+    color: var(--color--5) /* Cor dos ícones ao passar o mouse */
+  }
+  
+  .create_post input[type="text"],
+  .create_post input[type="file"] {
+    width: 100%;
+    border: none;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 768px) {
+    .create_post {
+        display: none;
+    }
+}

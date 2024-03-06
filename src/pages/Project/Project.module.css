@@ -1,6 +1,6 @@
 .project_container {
     text-align: center;
-    max-width: 40%;
+    max-width: 100%;
     margin: 0 auto;
     gap: 16px;
     background-color: var(--color--2);

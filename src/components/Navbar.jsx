@@ -5,6 +5,7 @@ import { useAuthValue } from "../../context/AuthContext";
 import styles from "./Navbar.module.css";
 import { IoHomeOutline, IoLogInOutline, IoPersonAddOutline, IoAddCircleOutline, IoBarChartOutline, IoInformationCircleOutline, IoLogOutOutline, IoSearchOutline } from 'react-icons/io5';
 import { FaRegPlusSquare, FaSearch } from "react-icons/fa";
+import { GoPlus } from "react-icons/go";
 
 const Navbar = () => {
     const { user } = useAuthValue();
@@ -47,7 +48,7 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <NavLink to="/publication" className={({ isActive }) => (isActive ? styles.active : "")}>
-                                    <IoAddCircleOutline className={`${styles.icon} ${styles.activeIcon}`} size="1.5em"/>
+                                    <GoPlus className={`${styles.iconAddCircle} ${styles.activeIcon}`} size="1.5em"/>
                                 </NavLink>
                             </li>
                             <li>
