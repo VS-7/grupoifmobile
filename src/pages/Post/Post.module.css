@@ -75,6 +75,51 @@
     font-weight: bold;
 }
 
+/* Post.module.css */
+
+.likeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.likeButton svg {
+    font-size: 2em;
+}
+
+.curtir {
+    color: var(--color--5); /* Cor padrão do Twitter */
+    transition: color 0.2s ease;
+}
+
+.curtir:hover{
+    color: var(--color-link); /* Cor padrão do Twitter */
+    transition: color 0.2s ease;
+}
+
+.descurtir {
+    color: var(--color-link); /* Cor de curtido do Twitter */
+    transition: color 0.2s ease;
+}
+
+.likesPreview {
+    color: var(--color--5); /* Cor do texto padrão para prévia de likes no Twitter */
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: -30px;
+    margin-right: 420px;
+}
+
+.likesPreview:hover {
+    text-decoration: underline;
+}
+
+
+
 /* Estilos para o fundo escurecido/translúcido */
 .likesModal {
     position: fixed; /* Faz o modal aparecer sobre o conteúdo */

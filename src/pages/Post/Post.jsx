@@ -3,11 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useAuthentication } from '../../hooks/useAuthentication';
 import { db } from '../../firebase/config';
-import { doc, updateDoc, arrayUnion, getDoc } from 'firebase/firestore';
+import { doc, updateDoc, arrayUnion, arrayRemove, getDoc } from 'firebase/firestore';
 import styles from "./Post.module.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
-import { FiHeart, FiPlusCircle } from "react-icons/fi";
+import { FiHeart, FiPlusCircle, FiCheck } from "react-icons/fi";
 
 const Post = () => {
     const { id } = useParams();
@@ -24,7 +24,7 @@ const Post = () => {
 
     useEffect(() => {
         if (post) {
-            setLiked(post.likes?.includes(userID));
+            setLiked(post.likes?.some(like => like.uid === userID));
             setLikes(post.likes || []);
             setComments(post.comments || []);
         }
@@ -47,16 +47,30 @@ const Post = () => {
     };
 
     const handleLike = async () => {
+        const userDisplayName = auth.currentUser.displayName; // Obter o displayName do usuário atual
+        const likeObject = { uid: userID, displayName: userDisplayName };
+    
         const postRef = doc(db, "posts", id);
-        if (liked) {
-            await updateDoc(postRef, { likes: arrayRemove(userID) });
-            setLikes(likes.filter(like => like !== userID));
-        } else {
-            await updateDoc(postRef, { likes: arrayUnion(userID) });
-            setLikes([...likes, userID]);
+        const postDoc = await getDoc(postRef);
+        if (postDoc.exists()) {
+            const currentLikes = postDoc.data().likes || [];
+            const isLiked = currentLikes.some(like => like.uid === userID);
+    
+            if (isLiked) {
+                // Remover o like
+                const updatedLikes = currentLikes.filter(like => like.uid !== userID);
+                await updateDoc(postRef, { likes: updatedLikes });
+                setLikes(updatedLikes);
+            } else {
+                // Adicionar o like
+                const updatedLikes = [...currentLikes, likeObject];
+                await updateDoc(postRef, { likes: updatedLikes });
+                setLikes(updatedLikes);
+            }
+            setLiked(!liked);
         }
-        setLiked(!liked);
     };
+    
 
     const handleShowLikesModal = () => setShowLikesModal(!showLikesModal);
 
@@ -82,7 +96,9 @@ const Post = () => {
                     </button>
                     {likes.length > 0 && (
                         <div onClick={handleShowLikesModal} className={styles.likesPreview}>
-                            {likes.length > 1 ? `Curtido por ${userLikes[userLikes.length - 1]} e outras ${likes.length - 1} pessoas` : `Curtido por ${userLikes[0]}`}
+                            {likes.length > 1
+                                ? `Curtido por ${likes[likes.length - 1].displayName} e outras ${likes.length - 1} pessoas`
+                                : `Curtido por ${likes[0].displayName}`}
                         </div>
                     )}
 
@@ -90,9 +106,9 @@ const Post = () => {
                         <div className={styles.likesModal} onClick={handleShowLikesModal}>
                             <div className={styles.modalContent} onClick={e => e.stopPropagation()}> {/* Impede que o clique no conteúdo feche o modal */}
                                 <span className={styles.closeModal} onClick={handleShowLikesModal}>&times;</span>
-                                <p>Curtidas</p>
-                                {userLikes.map((name, index) => (
-                                    <div key={index}>{name}</div>
+                                <p><strong>Curtidas</strong></p>
+                                {likes.map((like, index) => (
+                                    <div key={index}>{like.displayName}</div> // Aqui estamos assumindo que 'likes' agora é um array de objetos com 'uid' e 'displayName'
                                 ))}
                             </div>
                         </div>
@@ -121,7 +137,7 @@ const Post = () => {
                 {/* Form for adding a new comment */}
                 <form onSubmit={handleAddComment} className={styles.commentForm}>
                     <textarea value={newComment} onChange={(e) => setNewComment(e.target.value)} placeholder="Adicione um comentário..." className={styles.textarea}/>
-                    <button type="submit" className={styles.btnAcess}>Comentar</button>
+                    <button type="submit" className={styles.btnAcess}><FiCheck /></button>
                 </form>
 
                 {/* Display comments */}
