@@ -5,6 +5,7 @@ import { useAuthValue } from "../../context/AuthContext";
 import styles from "./Navbar.module.css";
 import { IoHomeOutline, IoLogInOutline, IoPersonAddOutline, IoAddCircleOutline, IoBarChartOutline, IoInformationCircleOutline, IoLogOutOutline, IoSearchOutline } from 'react-icons/io5';
 import { FaRegPlusSquare, FaSearch } from "react-icons/fa";
+import { FiHome, FiLogIn,FiSearch, FiUser } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
 
 const Navbar = () => {
@@ -22,14 +23,14 @@ const Navbar = () => {
                 <ul className={styles.links_list}>
                     <li>
                         <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : "")}>
-                            <IoHomeOutline className={`${styles.icon} ${styles.activeIcon}`}/>
+                            <FiHome className={`${styles.icon} ${styles.activeIcon}`}/>
                         </NavLink>
                     </li>
                     {!user && (
                         <>
                             <li>
                                 <NavLink to="/login" className={({ isActive }) => (isActive ? styles.active : "")}>
-                                    <IoLogInOutline className={`${styles.icon} ${styles.activeIcon}`}/>
+                                    <FiLogIn className={`${styles.icon} ${styles.activeIcon}`}/>
                                 </NavLink>
                             </li>
                             <li>
@@ -43,7 +44,7 @@ const Navbar = () => {
                         <>
                             <li>
                                 <NavLink to="/searchpage" className={({ isActive }) => (isActive ? styles.active : "")}>
-                                    <IoSearchOutline  className={`${styles.icon} ${styles.activeIcon}`}/> 
+                                    <FiSearch  className={`${styles.icon} ${styles.activeIcon}`}/> 
                                 </NavLink>
                             </li>
                             <li>
@@ -53,7 +54,7 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.active : "")}>
-                                    <IoBarChartOutline className={`${styles.icon} ${styles.activeIcon}`}/>
+                                    <FiUser className={`${styles.icon} ${styles.activeIcon}`}/>
                                 </NavLink>
                             </li>
                         </>

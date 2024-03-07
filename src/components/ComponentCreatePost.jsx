@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthValue } from '../../context/AuthContext';
 import { useInsertDocument } from '../hooks/useInsertDocument';
 import { useUploadDocument } from '../hooks/useUploadDocument';
-import { FiImage, FiLink, FiTag } from 'react-icons/fi';
+import { FiImage, FiLink, FiTag, FiType } from 'react-icons/fi';
 import { BiFontFamily } from "react-icons/bi";
 import styles from './ComponentCreatePost.module.css';
 
@@ -51,7 +51,7 @@ const ComponentCreatePost = () => {
     }
 
     // Create tags array
-    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
+    const tagsArray = tags.split("#").map((tag) => tag.trim().toLowerCase());
 
     const linksArray = links.split(",").map((link) => link.trim());
 
@@ -76,7 +76,7 @@ const ComponentCreatePost = () => {
   // JSX do componente
   return (
     <div className={styles.create_post}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         {/* Conteúdo */}
         {showTitleInput && (
         <input 
@@ -98,7 +98,7 @@ const ComponentCreatePost = () => {
         
         {/* Botões para exibir inputs */}
         <div className={styles.buttons}>
-        <button type="button" onClick={toggleTitleInput} className={styles.iconButton}><BiFontFamily /></button>
+        <button type="button" onClick={toggleTitleInput} className={styles.iconButton}><FiType /></button>
           <button type="button" onClick={toggleImageInput} className={styles.iconButton}><FiImage /></button>
           <button type="button" onClick={toggleLinksInput} className={styles.iconButton}><FiLink /></button>
           <button type="button" onClick={toggleTagsInput} className={styles.iconButton}><FiTag /></button>

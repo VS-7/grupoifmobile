@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthValue } from '../../context/AuthContext';
 import { useInsertDocument } from '../hooks/useInsertDocument';
 import { useUploadDocument } from '../hooks/useUploadDocument';
-import { FiImage, FiLink, FiTag } from 'react-icons/fi';
+import { FiImage, FiLink, FiTag, FiType } from 'react-icons/fi';
 import { BiFontFamily } from "react-icons/bi";
 import styles from './ComponentCreatePost.module.css'; // Pode ser necessário ajustar o caminho do CSS
 
@@ -74,7 +74,7 @@ const ComponentCreateProject = () => {
   // JSX do componente
   return (
     <div className={styles.create_post}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         {/* Input para o título do projeto */}
         {showTitleInput && (
         <input 
@@ -98,7 +98,7 @@ const ComponentCreateProject = () => {
 
         {/* Botões para exibir inputs de imagem, links e tags */}
         <div className={styles.buttons}>
-        <button type="button" onClick={toggleTitleInput} className={styles.iconButton}><BiFontFamily /></button>
+        <button type="button" onClick={toggleTitleInput} className={styles.iconButton}><FiType /></button>
           <button type="button" onClick={toggleImageInput} className={styles.iconButton}><FiImage /></button>
           <button type="button" onClick={toggleLinksInput} className={styles.iconButton}><FiLink /></button>
           <button type="button" onClick={toggleTagsInput} className={styles.iconButton}><FiTag /></button>
