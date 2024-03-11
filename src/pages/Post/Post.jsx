@@ -38,6 +38,11 @@ const Post = () => {
         }
     }, [likes]);
 
+    const openLink = (url) => {
+        window.open(url, '_blank');
+    };
+
+
     const fetchUserNames = async (userIds) => {
         const userNames = await Promise.all(userIds.map(async (userId) => {
             const userDoc = await getDoc(doc(db, "users", userId));
