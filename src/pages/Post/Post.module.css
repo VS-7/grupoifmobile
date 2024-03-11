@@ -143,7 +143,7 @@
     }
     
     .likeButton svg {
-        font-size: 2em;
+        font-size: 1.7em;
     }
     
     .curtir {
@@ -165,8 +165,7 @@
         color: var(--color--5); /* Cor do texto padrão para prévia de likes no Twitter */
         font-size: 1em;
         cursor: pointer;
-        margin-top: -30px;
-        margin-right: 420px;
+        display: flex;
     }
     
     .likesPreview:hover {
@@ -209,7 +208,7 @@
     }
     
     .likeButton svg {
-        font-size: 2em;
+        font-size: 1.7em;
     }
     
     .curtir {
@@ -231,9 +230,7 @@
         color: var(--color--5); /* Cor do texto padrão para prévia de likes no Twitter */
         font-size: 1em;
         cursor: pointer;
-        margin-top: -30px;
         display: flex;
-        margin-left: 50px;
     }
     
     .likesPreview:hover {
@@ -253,3 +250,86 @@
         margin-left: 10px;
     }
 }
+
+.modalComments {
+    display: flex;
+    text-align: justify;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.h3 {
+    display: flex;
+}
+
+.buttonContainer {
+    display: flex;
+}
+
+.commentButton {
+    background: none;
+    border: none;
+    color: var(--color--5);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .commentButton svg {
+        font-size: 1.7em;
+    }
+    .commentButton svg:hover {
+        color: var(--color-link);
+    }
+
+
+.commentsModalOverlay {
+    position: fixed; /* Faz o overlay cobrir toda a tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    display: flex;
+    justify-content: center; /* Centraliza o modal horizontalmente */
+    align-items: center; /* Centraliza o modal verticalmente */
+    z-index: 1000; /* Garante que o modal fique acima de outros conteúdos */
+  }
+  
+  .commentsModal {
+    background-color:  rgba(0, 0, 0, 0.77);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px; /* Ou qualquer largura que prefira */
+    width: 90%; /* Adapta-se a telas menores */
+    max-height: 80%; /* Altura máxima do modal */
+    overflow-y: auto; /* Permite rolagem se o conteúdo exceder a altura */
+    position: relative; /* Para posicionar o botão de fechar corretamente */
+  }
+  
+  .closeModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  .commentsContent {
+    margin-top: 20px;
+  }
+  
+  .commentForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .textarea {
+    margin-bottom: 10px;
+  }
+  
+  .btnSubmit {
+    align-self: flex-end; /* Alinha o botão de enviar à direita */
+  }

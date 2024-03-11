@@ -144,6 +144,15 @@
     .links_list li a {
         flex-direction: column; /* Ícones acima do texto para melhor visibilidade em dispositivos móveis */
     }
+    .iconAddCircle {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+        background-color: var(--color-link);
+        color: var(--color--1);
+        border-radius: 100%;
+        margin-top: auto; /* Empurra o ícone para o final da barra de navegação */
+    }
 
     /* Remova a alteração de direção do flex de .headerContent para evitar empilhar a marca e o botão de sair verticalmente */
 }

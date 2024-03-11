@@ -7,7 +7,9 @@ import { doc, updateDoc, arrayUnion, arrayRemove, getDoc } from 'firebase/firest
 import styles from "./Post.module.css";
 import { IoIosArrowBack } from "react-icons/io";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
-import { FiHeart, FiPlusCircle, FiCheck } from "react-icons/fi";
+import { FiHeart, FiPlusCircle, FiCheck, FiMessageCircle } from "react-icons/fi";
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 const Post = () => {
     const { id } = useParams();
@@ -18,6 +20,7 @@ const Post = () => {
     const [liked, setLiked] = useState(false);
     const [likes, setLikes] = useState([]);
     const [showLikesModal, setShowLikesModal] = useState(false);
+    const [showCommentsModal, setShowCommentsModal] = useState(false);
     const [userLikes, setUserLikes] = useState([]);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
@@ -96,9 +99,6 @@ const Post = () => {
                     <Link to="/" className={styles.btnback}><IoIosArrowBack size="1em"/> Voltar</Link>
                     <h3>{post.title}</h3>
                     <img src={post.image} alt={post.title} />
-                    <button onClick={handleLike} className={styles.likeButton}>
-                        {liked ? <FiHeart className={styles.descurtir}/> : <FiHeart className={styles.curtir}/>}
-                    </button>
                     {likes.length > 0 && (
                         <div onClick={handleShowLikesModal} className={styles.likesPreview}>
                             {likes.length > 1
@@ -106,6 +106,27 @@ const Post = () => {
                                 : `Curtido por ${likes[0].displayName}`}
                         </div>
                     )}
+                    <div className={styles.buttonContainer}>
+                    <button onClick={handleLike} className={styles.likeButton}>
+                        {liked ? <FiHeart className={styles.descurtir}/> : <FiHeart className={styles.curtir}/>}
+                    </button>
+                    <button onClick={() => setShowCommentsModal(true)} className={styles.commentButton}>
+                        <FiMessageCircle/> {/* Ícone de comentário */}
+                    </button>
+                    {showCommentsModal && (
+                        <div className={styles.commentsModalOverlay}>
+                            <div className={styles.commentsModal}>
+                                <span className={styles.closeModal} onClick={() => setShowCommentsModal(false)}>&times;</span>
+                                <div className={styles.commentsContent}>
+                                    <form onSubmit={handleAddComment} className={styles.commentForm}>
+                                        <textarea value={newComment} onChange={(e) => setNewComment(e.target.value)} placeholder="Adicione um comentário..." className={styles.textarea}/>
+                                        <button type="submit" className={styles.btnSubmit}><FiCheck /></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                   </div>
 
                     {showLikesModal && (
                         <div className={styles.likesModal} onClick={handleShowLikesModal}>
@@ -119,7 +140,12 @@ const Post = () => {
                         </div>
                     )}
                     <h3>Esta publicação fala sobre</h3>
-                    <p className={styles.p_body}>{post.body}</p>    
+                    <p className={styles.p_body}>{post.body}</p>   
+                    {post.createdAt && post.createdBy && (
+                    <p className={styles.creationDate}>
+                         {format(post.createdAt.toDate(), "d 'de' MMMM 'de' yyyy", { locale: ptBR })}
+                    </p>
+                )}
                     <div className={styles.tags}>
                         {post.tagsArray && post.tagsArray.map((tag) => (
                             <p key={tag}><span>#</span>{tag}</p>
@@ -139,12 +165,8 @@ const Post = () => {
                 
             )}
              <div>
-                {/* Form for adding a new comment */}
-                <form onSubmit={handleAddComment} className={styles.commentForm}>
-                    <textarea value={newComment} onChange={(e) => setNewComment(e.target.value)} placeholder="Adicione um comentário..." className={styles.textarea}/>
-                    <button type="submit" className={styles.btnAcess}><FiCheck /></button>
-                </form>
-
+                <h3 className={styles.h3}>Comentários</h3>
+                <div className={styles.modalComments}>
                 {/* Display comments */}
                 {comments.length > 0 && (
                     <div className={styles.commentsSection}>
@@ -153,8 +175,10 @@ const Post = () => {
                                 <strong>{comment.displayName}</strong>: {comment.comment}
                             </div>
                         ))}
+                        
                     </div>
                 )}
+                </div>
             </div>
         </div>
         
