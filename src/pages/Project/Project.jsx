@@ -5,7 +5,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useAuthValue } from "../../../context/AuthContext"; // Importe o contexto de autenticação
 import { db } from "../../firebase/config";
-import { doc, getDoc, updateDoc, arrayUnion, increment } from "firebase/firestore";
+import { doc, getDoc, updateDoc, arrayUnion, increment, collection, addDoc } from "firebase/firestore";
 import { MdOutlinePersonPin } from "react-icons/md";
 import { HiOutlineArrowUpRight } from "react-icons/hi2";
 import { AiFillLike } from "react-icons/ai";
@@ -15,6 +15,8 @@ const Project = () => {
     const { id } = useParams();
     const { document: project, loading, error } = useFetchDocument("projects", id);
     const [participantsDetails, setParticipantsDetails] = useState([]);
+    const [showJoinModal, setShowJoinModal] = useState(false);
+    const [interestReason, setInterestReason] = useState('');
     const { user } = useAuthValue();
     const navigate = useNavigate();
 
@@ -42,6 +44,38 @@ const Project = () => {
             console.error("Erro ao entrar no projeto", err);
         }
     };
+
+
+    const handleOpenJoinModal = () => {
+        setShowJoinModal(true);
+    };
+    
+    const handleSendInterest = async () => {
+        if (!interestReason.trim()) {
+          alert("Por favor, preencha o motivo do seu interesse.");
+          return;
+        }
+      
+        // Supondo que você já tem `db` (sua referência ao Firestore) inicializado corretamente
+        const interestCollectionRef = collection(db, "projectInterests");
+        
+        try {
+          await addDoc(interestCollectionRef, {
+            userId: user.uid, // Supondo que `user` é o usuário atualmente autenticado
+            projectId: id, // `id` do projeto que vem do useParams() ou contexto similar
+            reason: interestReason,
+            status: 'pending', // 'pending', 'accepted', ou 'rejected'
+          });
+      
+          // Sucesso
+          console.log("Solicitação enviada com sucesso!");
+          setShowJoinModal(false); // Fechar o modal
+          setInterestReason(""); // Limpar o campo de texto
+        } catch (error) {
+          console.error("Erro ao enviar interesse:", error);
+          alert("Houve um erro ao enviar sua solicitação. Tente novamente.");
+        }
+      };
 
     // Ajuste para abrir diretamente o link único do projeto
     const openLink = () => {
@@ -126,9 +160,26 @@ const Project = () => {
                     </div>
                     <div className={styles.links}>
                     <h3>Participar</h3>
-                   <button onClick={(event) => animateAndConfetti(event)} className={styles.icon}>
+                    <button onClick={handleOpenJoinModal} className={styles.joinButton}>
                         <AiFillLike size="2em"/>
+                        Participar
                     </button>
+                    {showJoinModal && (
+                    <div className={styles.modalBackground}>
+                        <div className={styles.modalContent}>
+                        <h2>Por que você tem interesse em participar do projeto?</h2>
+                        <textarea
+                            value={interestReason}
+                            onChange={(e) => setInterestReason(e.target.value)}
+                            placeholder="Explique seu interesse no projeto"
+                        />
+                        <div>
+                            <button onClick={handleSendInterest}>Enviar</button>
+                            <button onClick={() => setShowJoinModal(false)}>Cancelar</button>
+                        </div>
+                        </div>
+                    </div>
+                    )}
                     </div>
                     {participantsDetails.length > 0 && (
                         <div className={styles.participantsContainer}>

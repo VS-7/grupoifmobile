@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuthValue } from "../../../context/AuthContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 import { useDeleteDocument } from "../../hooks/useDeleteDocument";
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, getDoc, query, where, updateDoc, doc } from 'firebase/firestore';
 import { db } from '../../firebase/config'; // Ajuste o caminho conforme necessário
 import { MdVisibility, MdEdit, MdDelete } from "react-icons/md";
 import { FaGear } from "react-icons/fa6";
@@ -20,6 +20,47 @@ const Dashboard = () => {
   
   const [activeTab, setActiveTab] = useState("posts");
   const [userDetails, setUserDetails] = useState({ bio: '', profileImage: '' });
+  const [interestRequests, setInterestRequests] = useState([]);
+
+
+  useEffect(() => {
+    const fetchInterestRequests = async () => {
+      const projectIds = projects ? projects.map(p => p.id) : [];
+      const querySnapshot = await getDocs(query(collection(db, "projectInterests"), where("projectId", "in", projectIds.length > 0 ? projectIds : ["dummy"])));
+      const interests = [];
+      const userFetchPromises = [];
+      
+      querySnapshot.forEach((doc) => {
+        // Para cada solicitação, buscamos os detalhes do usuário
+        userFetchPromises.push(fetchUserDetailsById(doc.data().userId).then(userName => {
+          interests.push({ id: doc.id, ...doc.data(), userName: userName });
+        }));
+      });
+      
+      // Aguardamos todas as buscas de usuários
+      await Promise.all(userFetchPromises);
+  
+      setInterestRequests(interests);
+    };
+  
+    if (projects && projects.length > 0) {
+      fetchInterestRequests();
+    }
+  }, [projects]);
+  
+  // Função auxiliar para buscar detalhes do usuário pelo ID
+  const fetchUserDetailsById = async (userId) => {
+    const docRef = doc(db, "users", userId);
+    const docSnap = await getDoc(docRef);
+  
+    if (docSnap.exists()) {
+      // Supondo que o nome do usuário está armazenado sob a chave 'displayName'
+      return docSnap.data().displayName;
+    } else {
+      console.log("No such document!");
+      return "Usuário Desconhecido";
+    }
+  };
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -40,6 +81,24 @@ const Dashboard = () => {
     setActiveTab(tab);
   };
 
+  const handleAccept = async (requestId) => {
+    const interestRef = doc(db, "projectInterests", requestId);
+    await updateDoc(interestRef, {
+      status: 'accepted'
+    });
+    // Atualiza a lista de solicitações para refletir a mudança
+    setInterestRequests(interests => interests.map(i => i.id === requestId ? { ...i, status: 'accepted' } : i));
+  };
+  
+  const handleReject = async (requestId) => {
+    const interestRef = doc(db, "projectInterests", requestId);
+    await updateDoc(interestRef, {
+      status: 'rejected'
+    });
+    // Atualiza a lista de solicitações para refletir a mudança
+    setInterestRequests(interests => interests.map(i => i.id === requestId ? { ...i, status: 'rejected' } : i));
+  };
+
   const deleteDocument = activeTab === "posts" ? deletePost : deleteProject;
   const documents = activeTab === "posts" ? posts : projects;
   const loading = activeTab === "posts" ? postsLoading : projectsLoading;
@@ -55,6 +114,18 @@ const Dashboard = () => {
           <Link to="/dashboard/edit-profile" className={styles.btn}>Editar Perfil</Link>
           <Link to="/dashboard/settings" className={styles.btnConfig}><FaGear /></Link>
         </div>
+              <div className={styles.interestRequestsSection}>
+        <h2>Solicitações de Participação</h2>
+            {interestRequests.map(request => (
+        <div key={request.id} className={styles.interestRequest}>
+          <p>{request.userName}: {request.reason}</p>
+          <div>
+            <button onClick={() => handleAccept(request.id)}>Aceitar</button>
+            <button onClick={() => handleReject(request.id)}>Rejeitar</button>
+          </div>
+        </div>
+      ))}
+      </div>
       </div>
       <h3>Suas Publicações</h3>
       <div className={styles.tab_buttons}>
